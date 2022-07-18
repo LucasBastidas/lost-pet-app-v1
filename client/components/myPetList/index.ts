@@ -34,7 +34,7 @@ export function initMyPetList() {
 			const cancelFormButton = this.querySelector(".cancel");
 			const list = this.querySelector(".list");
 			const closeButton = this.querySelector(".cerrar");
-			const formButton = this.querySelector(".form-button");
+			const formButton = this.querySelector(".save-changes-button");
 
 			//BOTON CERRAR MODIFICACION
 			closeButton.addEventListener("click", () => {
@@ -84,7 +84,7 @@ export function initMyPetList() {
 				const petId = (e as any).detail.petId;
 				const userId = (e as any).detail.userId;
 				state.setPetIdToUpdate(petId, () => {
-					console.log("Metí el id");
+					// console.log("Metí el id");
 					(formCont as any).style.display = "flex";
 				});
 			});
@@ -109,10 +109,10 @@ export function initMyPetList() {
 					newPetDescription,
 					newPetUrlImage,
 					() => {
-						console.log(state.data.myPetUpdateData);
-						console.log("voy a modificar");
+						// console.log(state.data.myPetUpdateData);
+						// console.log("voy a modificar");
 						state.updateDataOfMyReportedPet(() => {
-							console.log("modifique mi mascota");
+							// console.log("modifique mi mascota");
 							state.getMyReportPets(() => {
 								Router.go("/my-reported-pets");
 								(formCont as any).style.display = "none";
