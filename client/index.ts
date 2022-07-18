@@ -1,0 +1,20 @@
+import { initHeaderComp } from "./components/header/index";
+import { initNearbyPetCard } from "./components/nearbyPetCard";
+import { initNearbyPetCardsList } from "./components/nearbyPetList/index";
+import { initMyPetCard } from "./components/myPetCard";
+import { initMyPetList } from "./components/myPetList";
+import "./router";
+import "./pages/home/index";
+import "./pages/log-in-1/index";
+import "./pages/log-in-2/index";
+import "./pages/sign-up/index";
+import "./pages/my-data/index";
+import "./pages/my-reported-pets/index";
+import "./pages/report-pet/index";
+import "./pages/task-completed";
+
+initHeaderComp();
+initNearbyPetCard();
+initNearbyPetCardsList();
+initMyPetCard();
+initMyPetList();
