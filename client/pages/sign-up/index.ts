@@ -31,7 +31,7 @@ class SignUp extends HTMLElement {
 									Router.go("/my-data");
 								} else if (state.data.go === "myReports") {
 									Router.go("/my-reported-pets");
-								} else if (state.data.go === "reporPet") {
+								} else if (state.data.go === "reportPet") {
 									Router.go("/report-pet");
 								} else {
 									Router.go("/");
