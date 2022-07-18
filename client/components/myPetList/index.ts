@@ -113,9 +113,9 @@ export function initMyPetList() {
 						// console.log("voy a modificar");
 						state.updateDataOfMyReportedPet(() => {
 							// console.log("modifique mi mascota");
-							state.getMyReportPets(() => {
-								Router.go("/my-reported-pets");
-								(formCont as any).style.display = "none";
+							state.setCompleteTaskMessage(3, () => {
+								Router.go("/task-completed");
+								// (formCont as any).style.display = "none";
 							});
 						});
 					}

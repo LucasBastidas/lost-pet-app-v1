@@ -391,6 +391,8 @@ const state = {
 			this.data.completedMessage = "La publicación se eliminó con exito!";
 		} else if (text == 2) {
 			this.data.completedMessage = "Ahora tu mascota aparece como encontrada!";
+		} else if (text == 3) {
+			this.data.completedMessage = "Se modificaron los datos de tu mascota";
 		}
 		callback();
 	},
