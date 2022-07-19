@@ -1,6 +1,8 @@
 import { state } from "../../state";
 import { Route, Router } from "@vaadin/router";
 import { getModeForUsageLocation } from "typescript";
+const logo = require("url:../../assets/logo.png");
+const menu = require("url:../../assets/menu.png");
 export function initHeaderComp() {
 	class HeaderCompEl extends HTMLElement {
 		constructor() {
@@ -223,9 +225,9 @@ export function initHeaderComp() {
          `;
 			this.innerHTML = `
          <div class="cont">
-         <div><img class="logo" src="https://cdn-icons-png.flaticon.com/512/489/489399.png" alt="hola"></img></div>
+         <div><img class="logo" src="${logo}" alt="hola"></img></div>
          <div class="open-menu-button-cont">
-         <img class="open-menu" src="https://cdn-icons-png.flaticon.com/512/1828/1828726.png"></img>
+         <img class="open-menu" src="${menu}"></img>
          </div>
          <div class="menu">
          <div class="close-menu"> X </div>
