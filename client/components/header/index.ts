@@ -56,6 +56,7 @@ export function initHeaderComp() {
 			logOutButton.addEventListener("click", () => {
 				state.resetState(() => {
 					Router.go("/");
+					location.reload();
 					(logOutButton as any).style.display = "none";
 					(myEmail as any).style.display = "none";
 					(logInButton as any).style.display = "block";

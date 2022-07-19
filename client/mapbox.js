@@ -1,5 +1,4 @@
-const MAPBOX_TOKEN =
-	"pk.eyJ1IjoibHVjYXNiYXN0aWRhcyIsImEiOiJjbDRyN2dvMzUweWxlM2tyMWY4NjNlbnZ6In0.e_5VH7dMQXwivRwgdGAN9w";
+const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 export const mapboxClient = new MapboxClient(MAPBOX_TOKEN);
 
 export function initMap() {
