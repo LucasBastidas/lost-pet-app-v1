@@ -51,15 +51,19 @@ export function initHeaderComp() {
 					(menu as any).style.display = "none";
 				}, 900);
 			});
-
+			function goHome(callback) {
+				Router.go("/");
+				callback();
+			}
 			//CERRAR SESIÓN
 			logOutButton.addEventListener("click", () => {
 				state.resetState(() => {
-					Router.go("/");
-					location.reload();
 					(logOutButton as any).style.display = "none";
 					(myEmail as any).style.display = "none";
 					(logInButton as any).style.display = "block";
+					goHome(() => {
+						location.reload();
+					});
 				});
 			});
 
