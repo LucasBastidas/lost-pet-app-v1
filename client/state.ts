@@ -77,7 +77,7 @@ const state = {
 	async getMyReportPets(callback) {
 		state.data.myPets = []; //SIEMPRE VACIA EL ARRAY PARA QUE NO HAYA DUPLICADOS
 		const currentState = this.data;
-		const myPets = await fetch("/pets/by-user-id", {
+		const myPets = await fetch("/me/pets", {
 			headers: {
 				"content-type": "application/json",
 				authorization: "bearer " + this.data.token,

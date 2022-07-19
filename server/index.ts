@@ -153,7 +153,7 @@ import { json, where } from "sequelize/types";
 	});
 
 	//SEARCH PETS BY USERID
-	app.get("/pets/by-user-id", middelwareAuth, async function (req, res) {
+	app.get("/me/pets", middelwareAuth, async function (req, res) {
 		const userId = req.userData.id;
 		const petsFound = await searchPetsByUserId(userId);
 		res.json(petsFound);

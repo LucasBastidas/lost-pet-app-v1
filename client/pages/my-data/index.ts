@@ -11,6 +11,7 @@ class MyData extends HTMLElement {
 		const ok = this.querySelector(".ok");
 
 		error as any;
+
 		//ACÁ SE PUEDEN CAMBIAR ALGUNOS DE NUESTROS DATOS Y LA CONTRASEÑA
 		form.addEventListener("submit", (e) => {
 			e.preventDefault();
