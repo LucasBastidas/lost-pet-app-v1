@@ -57,14 +57,26 @@ export function initHeaderComp() {
 			}
 			//CERRAR SESIÓN
 			logOutButton.addEventListener("click", () => {
-				state.resetState(() => {
-					(logOutButton as any).style.display = "none";
-					(myEmail as any).style.display = "none";
-					(logInButton as any).style.display = "block";
-					goHome(() => {
-						location.reload();
+				if (location.pathname == "/") {
+					console.log("if", location.pathname);
+
+					state.resetState(() => {
+						(logOutButton as any).style.display = "none";
+						(myEmail as any).style.display = "none";
+						(logInButton as any).style.display = "block";
+						goHome(() => {
+							location.reload();
+						});
 					});
-				});
+				} else {
+					state.resetState(() => {
+						console.log("else", location.pathname);
+						(logOutButton as any).style.display = "none";
+						(myEmail as any).style.display = "none";
+						(logInButton as any).style.display = "block";
+						goHome(() => {});
+					});
+				}
 			});
 
 			//IR A MIS DATOS
