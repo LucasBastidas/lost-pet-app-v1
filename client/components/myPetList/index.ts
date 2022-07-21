@@ -1,6 +1,7 @@
 import { state } from "../../state";
 import Dropzone from "dropzone";
 import { Router } from "@vaadin/router";
+import { a, initMap, mapboxClient } from "../../mapbox.js";
 export function initMyPetList() {
 	class MyPetListCompEl extends HTMLElement {
 		connectedCallback() {
@@ -28,6 +29,25 @@ export function initMyPetList() {
 
 				return dataUrl;
 			});
+
+			// MAPBOX
+			const latAndLng = [];
+			const map = this.querySelector("#map");
+			map as any;
+
+			initMap(map);
+			async function searchLatAndLng(lugar) {
+				const search = await mapboxClient.geocodeForward(lugar, {
+					// country: "ar",
+					autocomplete: true,
+					language: "es",
+				});
+				const result = search.entity.features[0];
+				const [lng, lat] = result.center;
+				latAndLng[0] = lng;
+				latAndLng[1] = lat;
+				return [lng, lat];
+			}
 
 			const formCont = this.querySelector(".form-cont");
 			const form = this.querySelector(".form");
@@ -94,7 +114,8 @@ export function initMyPetList() {
 				var newPetName = (target as any).petName.value;
 				var newPetDescription = (target as any).petDescription.value;
 				var newPetUrlImage = urlImage[0];
-				(formButton as any).style.display = "none";
+				var lng = latAndLng[0];
+				var lat = latAndLng[1];
 				if (newPetName === "") {
 					newPetName = undefined;
 				}
@@ -104,12 +125,15 @@ export function initMyPetList() {
 				if (newPetUrlImage === "") {
 					newPetUrlImage = undefined;
 				}
+
 				state.setPetDataToUpdate(
 					newPetName,
 					newPetDescription,
 					newPetUrlImage,
+					lat,
+					lng,
 					() => {
-						// console.log(state.data.myPetUpdateData);
+						console.log(state.data.myPetUpdateData);
 						// console.log("voy a modificar");
 						state.updateDataOfMyReportedPet(() => {
 							// console.log("modifique mi mascota");
@@ -196,6 +220,10 @@ export function initMyPetList() {
          .dz-error-mark{
             display:none;
          }
+			.map{
+				height:150px;
+				width:100%;
+			}
 			.cerrar{
             position: fixed;
             right: 24px;
@@ -239,6 +267,13 @@ export function initMyPetList() {
       <p>Description</p>
       <textarea class="text-area" name="petDescription"></textarea>
       </label>
+
+		<label>
+               <p>UBICACIÓN</p>
+               <input class="input" name="qmap" type="text">
+
+               <div id="map" class="map"></div>
+               </label>
 
       <div>
       <button class="save-changes-button">Guardar cambios</button>

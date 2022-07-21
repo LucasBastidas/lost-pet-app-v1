@@ -28,6 +28,8 @@ const state = {
 			name: "",
 			imageUrl: "",
 			description: "",
+			lat: "",
+			lng: "",
 		},
 		lostState: "",
 		nearbyPets: [],
@@ -323,10 +325,12 @@ const state = {
 	},
 
 	//SETEA NOMBRE DEL PET A MODIFICAR
-	setPetDataToUpdate(name, description, imageUrl, callback) {
+	setPetDataToUpdate(name, description, imageUrl, lat, lng, callback) {
 		state.data.myPetUpdateData.name = name;
 		state.data.myPetUpdateData.description = description;
 		state.data.myPetUpdateData.imageUrl = imageUrl;
+		state.data.myPetUpdateData.lat = lat;
+		state.data.myPetUpdateData.lng = lng;
 		callback();
 	},
 
@@ -345,6 +349,8 @@ const state = {
 					name: state.data.myPetUpdateData.name,
 					description: state.data.myPetUpdateData.description,
 					imageUrl: state.data.myPetUpdateData.imageUrl,
+					lat: state.data.myPetUpdateData.lat,
+					lng: state.data.myPetUpdateData.lng,
 				}),
 			}
 		);
