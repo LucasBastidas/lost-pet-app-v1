@@ -108,9 +108,10 @@ export function initMyPetList() {
 					(formCont as any).style.display = "flex";
 				});
 			});
-			form.addEventListener("submit", (e) => {
+			form.addEventListener("submit", async (e) => {
 				e.preventDefault();
 				const target = e.target;
+				var lngAndLat = await searchLatAndLng(target.qmap.value);
 				var newPetName = (target as any).petName.value;
 				var newPetDescription = (target as any).petDescription.value;
 				var newPetUrlImage = urlImage[0];
