@@ -167,7 +167,7 @@ export function initMyPetList() {
 				border: solid;
 				border-color: #3774a5;
 				border-radius: 4%;
-				top: 20%;
+				top: 0%;
 				gap: 0px;
 				left: 0;
 				right: 0;
@@ -222,8 +222,10 @@ export function initMyPetList() {
             display:none;
          }
 			.map{
-				height:150px;
-				width:100%;
+				height: 140px;
+				width: 200px;
+				margin-top: 5px;
+				margin-bottom: 5px;
 			}
 			.cerrar{
             position: fixed;
