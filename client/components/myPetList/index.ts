@@ -111,7 +111,7 @@ export function initMyPetList() {
 			form.addEventListener("submit", async (e) => {
 				e.preventDefault();
 				const target = e.target;
-				var lngAndLat = await searchLatAndLng(target.qmap.value);
+				var lngAndLat = await searchLatAndLng((target as any).qmap.value);
 				var newPetName = (target as any).petName.value;
 				var newPetDescription = (target as any).petDescription.value;
 				var newPetUrlImage = urlImage[0];
