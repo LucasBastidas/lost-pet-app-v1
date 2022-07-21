@@ -1,4 +1,4 @@
-import { state } from "../../state";
+import { state } from "./state";
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 
 export const mapboxClient = new MapboxClient(MAPBOX_TOKEN);
