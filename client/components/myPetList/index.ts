@@ -221,6 +221,7 @@ export function initMyPetList() {
          .dz-error-mark{
             display:none;
          }
+			.map-cont{}
 			.map{
 				height: 140px;
 				width: 200px;
@@ -274,8 +275,10 @@ export function initMyPetList() {
 		<label>
                <p>UBICACIÓN</p>
                <input class="input" name="qmap" type="text">
-
+					
+					<div class="map-cont">
                <div id="map" class="map"></div>
+					</div>
                </label>
 
       <div>
