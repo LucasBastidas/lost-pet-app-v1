@@ -221,7 +221,10 @@ export function initMyPetList() {
          .dz-error-mark{
             display:none;
          }
-			.map-cont{}
+			.map-cont{
+				display: flex;
+				justify-content: center;
+			}
 			.map{
 				height: 140px;
 				width: 200px;
