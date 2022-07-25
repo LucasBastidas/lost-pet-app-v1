@@ -15,14 +15,6 @@ class taskCompleted extends HTMLElement {
 					Router.go("/");
 				});
 			});
-			// if (state.data.myLat != "") {
-			// 	state.data.nearbyPets = [];
-			// 	state.searchNearbyPets(() => {
-			// 		Router.go("/");
-			// 	});
-			// } else if ()  {
-			// 	Router.go("/");
-			// }
 		});
 	}
 	render() {
