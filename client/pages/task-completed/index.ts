@@ -8,14 +8,21 @@ class taskCompleted extends HTMLElement {
 	addListeners() {
 		const button = this.querySelector(".button");
 		button.addEventListener("click", () => {
-			if (state.data.myLat != "") {
-				state.data.nearbyPets = [];
+			state.data.myLat = "";
+			state.data.myLng = "";
+			state.setMyLoc(() => {
 				state.searchNearbyPets(() => {
 					Router.go("/");
 				});
-			} else {
-				Router.go("/");
-			}
+			});
+			// if (state.data.myLat != "") {
+			// 	state.data.nearbyPets = [];
+			// 	state.searchNearbyPets(() => {
+			// 		Router.go("/");
+			// 	});
+			// } else if ()  {
+			// 	Router.go("/");
+			// }
 		});
 	}
 	render() {
