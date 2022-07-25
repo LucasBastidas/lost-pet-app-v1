@@ -39,7 +39,7 @@ export function initMyPetList() {
 			async function searchLatAndLng(lugar) {
 				const search = await mapboxClient.geocodeForward(lugar, {
 					// country: "ar",
-					autocomplete: true,
+					// autocomplete: true,
 					language: "es",
 				});
 				const result = search.entity.features[0];
