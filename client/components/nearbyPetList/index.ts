@@ -140,7 +140,7 @@ export function initNearbyPetCardsList() {
 			</label>
 
 			<label>
-				<p>Nombre</p>
+				<p>Mensaje</p>
 				<textarea name="description" cols="30" rows="10"></textarea>
 			</label>
 			<div>
