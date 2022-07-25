@@ -276,7 +276,7 @@ export function initMyPetList() {
       </label>
 
 		<label>
-               <p>UBICACIÓN</p>
+               <p>UBICACIÓN (Punto de referencia)</p>
                <input class="input" name="qmap" type="text">
 					
 					<div class="map-cont">

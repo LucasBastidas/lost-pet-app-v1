@@ -181,7 +181,7 @@ class ReportPet extends HTMLElement {
                </label>
 
                <label>
-               <p>UBICACIÓN</p>
+               <p>UBICACIÓN (Punto de referencia)</p>
                <input class="input" name="qmap" type="text">
 
                <div id="map" class="map"></div>
