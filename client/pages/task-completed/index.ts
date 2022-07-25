@@ -8,10 +8,14 @@ class taskCompleted extends HTMLElement {
 	addListeners() {
 		const button = this.querySelector(".button");
 		button.addEventListener("click", () => {
-			state.data.nearbyPets = [];
-			state.searchNearbyPets(() => {
+			if (state.data.myLat != "") {
+				state.data.nearbyPets = [];
+				state.searchNearbyPets(() => {
+					Router.go("/");
+				});
+			} else {
 				Router.go("/");
-			});
+			}
 		});
 	}
 	render() {
