@@ -37,16 +37,21 @@ export function initMyPetList() {
 
 			initMap(map);
 			async function searchLatAndLng(lugar) {
-				const search = await mapboxClient.geocodeForward(lugar, {
-					// country: "ar",
-					// autocomplete: true,
-					language: "es",
-				});
-				const result = search.entity.features[0];
-				const [lng, lat] = result.center;
-				latAndLng[0] = lng;
-				latAndLng[1] = lat;
-				return [lng, lat];
+				if (lugar == "" || lugar == undefined) {
+					latAndLng[0] = undefined;
+					latAndLng[1] = undefined;
+				} else {
+					const search = await mapboxClient.geocodeForward(lugar, {
+						// country: "ar",
+						// autocomplete: true,
+						language: "es",
+					});
+					const result = search.entity.features[0];
+					const [lng, lat] = result.center;
+					latAndLng[0] = lng;
+					latAndLng[1] = lat;
+					return [lng, lat];
+				}
 			}
 
 			const formCont = this.querySelector(".form-cont");
