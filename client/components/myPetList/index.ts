@@ -180,7 +180,7 @@ export function initMyPetList() {
 				text-align: center;
 				animation: myAnim 1s ease 0s 1 normal forwards;
 			}
-			@media(min-width:980px){
+			@media(max-height:980px){
 				.form-cont{
 					background-color: black;
 				}
