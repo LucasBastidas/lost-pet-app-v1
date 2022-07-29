@@ -180,7 +180,7 @@ export function initMyPetList() {
 				text-align: center;
 				animation: myAnim 1s ease 0s 1 normal forwards;
 			}
-			@media(max-height:805px){
+			@media(min-height:805px){
 				.form-cont{
 					overflow-y: scroll;
 				max-height: 100%;
