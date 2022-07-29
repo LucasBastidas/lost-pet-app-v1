@@ -165,7 +165,8 @@ export function initMyPetList() {
 				display: none;
 				flex-direction: column;
 				position: fixed;
-				
+				overflow-y: scroll;
+				max-height: 100%;
 				align-items: center;
 				margin-left: 20px;
 				margin-right: 20px;
@@ -180,9 +181,10 @@ export function initMyPetList() {
 				text-align: center;
 				animation: myAnim 1s ease 0s 1 normal forwards;
 			}
-			@media(max-height:980px){
+			@media(min-height:805px){
 				.form-cont{
-					background-color: black;
+					overflow-y: unset;
+					max-height: unset;
 				}
 			}
          .form{
