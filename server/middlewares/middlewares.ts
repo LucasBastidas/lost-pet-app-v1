@@ -37,6 +37,9 @@ export function bodyToIndex(body, id?) {
 			lng: body.lng,
 		};
 	}
+	if (body.ubication) {
+		respuesta.ubication = body.ubication;
+	}
 	if (id) {
 		respuesta.objectID = id;
 	}

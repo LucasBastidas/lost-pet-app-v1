@@ -4,11 +4,17 @@ export function initMyPetCard() {
 		petId;
 		userId;
 		petName;
+		petImage;
+		petDescription;
+		petUbication;
 		constructor() {
 			super();
 			this.petId = this.getAttribute("petId");
 			this.userId = this.getAttribute("userId");
 			this.petName = this.getAttribute("title");
+			this.petDescription = this.getAttribute("description");
+			this.petImage = this.getAttribute("imageUrl");
+			this.petUbication = this.getAttribute("ubication");
 		}
 		connectedCallback() {
 			this.render();
@@ -45,6 +51,9 @@ export function initMyPetCard() {
 							petId: this.petId,
 							userId: this.userId,
 							petName: this.petName,
+							petImage: this.petImage,
+							petDescrption: this.petDescription,
+							petUbication: this.petUbication,
 						},
 						bubbles: true,
 						// esto hace que el evento pueda
@@ -74,6 +83,7 @@ export function initMyPetCard() {
 			const title = this.getAttribute("title");
 			const description = this.getAttribute("description");
 			const imageUrl = this.getAttribute("imageUrl");
+			const ubication = this.getAttribute("ubication");
 			const petId = this.getAttribute("pet-id");
 			var style = document.createElement("style");
 			style.innerHTML = `
@@ -105,13 +115,18 @@ export function initMyPetCard() {
                padding-right:8px;
             }
             .title{               
-               font-size: 25px;
+               font-size: 20px;
                margin: 0px;
                padding-top:10px;
             }
+            .ubication{
+               margin: 0px;
+               font-size: 14px;
+               color: aquamarine;
+            }
             .description{
-               font-size: 15px;
-               margin-bottom: 8px;
+               font-size: 13px;
+               margin-bottom: 5px;
             }
             .vermas{
                font-size:20px;
@@ -130,20 +145,35 @@ export function initMyPetCard() {
                text-align: center;
                height: 55px;
                width: 110px;
+               background-color: #97fbda;
                border-radius: 20%;
-               border: solid 3px black;
+               border: solid 3px;
+               border-color: #30ab81;
+               cursor:pointer;
+            }
+            .update-button:hover{
+               background-color:#30ab81;
             }
             .found-button{
                text-align: center;
                height: 55px;
+               background-color: burlywood;
                width: 110px;
                border-radius: 20%;
-               border: solid 3px black;
+               border: solid 3px #a86307;
+               cursor:pointer;
+            }
+            .found-button:hover{
+               background-color:#a86307;
             }
             .delete-button{
                color: white;
                border-radius: 7px;
                background-color: #b90000;
+               cursor:pointer;
+            }
+            .delete-button:hover{
+               background-color:#540a0a;
             }
 
          `;
@@ -154,6 +184,7 @@ export function initMyPetCard() {
          </div>   
          <div class="title-description-cont">
             <h3 class="title">${title}</h3>
+            <h2 class="ubication">${ubication}</h2>
             <p class="description">${description}</p>
          </div>
          <div class="buttons-cont">

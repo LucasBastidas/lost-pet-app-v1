@@ -12,6 +12,7 @@ import "./pages/my-data/index";
 import "./pages/my-reported-pets/index";
 import "./pages/report-pet/index";
 import "./pages/task-completed";
+import "dotenv/config";
 
 initHeaderComp();
 initNearbyPetCard();

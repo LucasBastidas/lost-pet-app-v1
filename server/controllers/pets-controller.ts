@@ -22,6 +22,7 @@ export async function createNewPet(
 	petDescription: string,
 	lostState: boolean,
 	imageUrl: string,
+	ubication: string,
 	lat: number,
 	lng: number
 ) {
@@ -36,6 +37,7 @@ export async function createNewPet(
 		lng,
 		user_id: userId,
 		userId: userId,
+		ubication: ubication,
 	});
 	const algoliaRes = await petsIndex.saveObject({
 		objectID: newPet.get("id"),
@@ -44,6 +46,7 @@ export async function createNewPet(
 		category: newPet.get("category"),
 		imageUrl: newPet.get("imageUrl"),
 		description: newPet.get("description"),
+		ubication: newPet.get("ubication"),
 		lost: newPet.get("lost"),
 		_geoloc: {
 			lat: newPet.get("lat"),

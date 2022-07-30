@@ -22,6 +22,7 @@ const state = {
 		newPetLat: "", //LAT DE LA MASCOTA QUE SE REPORTARA
 		newPetLng: "", //LNG DE LA MASCOTA QUE SE REPORTARA
 		newPetUrlImage: "", //IMAGEN URL DE LA MASCOTA QUE SE REPORTARA
+		newPetUbication: "",
 		myPets: [],
 		myPetUpdateData: {
 			id: 0,
@@ -30,6 +31,7 @@ const state = {
 			description: "",
 			lat: "",
 			lng: "",
+			ubication: "",
 		},
 		lostState: "",
 		nearbyPets: [],
@@ -287,6 +289,7 @@ const state = {
 		imageUrl: string,
 		lat: number,
 		lng: number,
+		ubication: string,
 		callback
 	) {
 		(this.data.newPetName = name),
@@ -294,6 +297,7 @@ const state = {
 			(this.data.newPetUrlImage = imageUrl),
 			(this.data.newPetLat = lat),
 			(this.data.newPetLng = lng);
+		this.data.newPetUbication = ubication;
 		callback();
 	},
 
@@ -312,6 +316,7 @@ const state = {
 				imageUrl: this.data.newPetUrlImage,
 				lat: this.data.newPetLat,
 				lng: this.data.newPetLng,
+				ubication: this.data.newPetUbication,
 			}),
 		});
 		// console.log(newReportPet);
@@ -325,15 +330,24 @@ const state = {
 	},
 
 	//SETEA NOMBRE DEL PET A MODIFICAR
-	setPetDataToUpdate(name, description, imageUrl, lat, lng, callback) {
+	setPetDataToUpdate(
+		name,
+		description,
+		imageUrl,
+		lat,
+		lng,
+		ubication,
+		callback
+	) {
 		state.data.myPetUpdateData.name = name;
 		state.data.myPetUpdateData.description = description;
 		state.data.myPetUpdateData.imageUrl = imageUrl;
 		state.data.myPetUpdateData.lat = lat;
 		state.data.myPetUpdateData.lng = lng;
+		state.data.myPetUpdateData.ubication = ubication;
 		callback();
 	},
-
+	setNewUbicationPet(callback) {},
 	//MODIFICA LOS DATOS DE LA MASCOTA EN LA DB
 	async updateDataOfMyReportedPet(callback) {
 		const newReportPet = await fetch(
@@ -351,9 +365,30 @@ const state = {
 					imageUrl: state.data.myPetUpdateData.imageUrl,
 					lat: state.data.myPetUpdateData.lat,
 					lng: state.data.myPetUpdateData.lng,
+					ubication: state.data.myPetUpdateData.ubication,
 				}),
 			}
 		);
+		callback();
+	},
+
+	//GET MY NAME
+	async getMyName(password, callback) {
+		const response = await fetch("/me", {
+			method: "post",
+			headers: {
+				"content-type": "application/json",
+				authorization: "bearer " + this.data.token,
+			},
+
+			body: JSON.stringify({
+				email: this.data.myEmail,
+				password: password,
+			}),
+		});
+		const data = await response.json();
+		const myName = data.fullName;
+		this.data.myName = myName;
 		callback();
 	},
 

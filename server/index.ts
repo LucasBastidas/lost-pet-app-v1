@@ -1,6 +1,7 @@
 import { sequelize } from "./db/connection";
 import { User, Auth, Pet } from "./db/models";
 import { petsIndex } from "./lib/algolia";
+import "dotenv/config";
 import {
 	findUserByEmail,
 	signUp,
@@ -32,7 +33,7 @@ import { json, where } from "sequelize/types";
 
 	const app = express();
 	const port = process.env.PORT || 3000;
-
+	// console.log("hola", process.env);
 	const SECRET = process.env.SECRET;
 
 	app.use(express.json({ limit: "50mb" }));
@@ -125,6 +126,7 @@ import { json, where } from "sequelize/types";
 			petData.description,
 			petData.lost,
 			petData.imageUrl,
+			petData.ubication,
 			petData.lat,
 			petData.lng
 		);

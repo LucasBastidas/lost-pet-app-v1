@@ -99,7 +99,7 @@ class MyData extends HTMLElement {
 				<form class="form">
          <label>
          <p class="label-title">Nombre</p>
-				<input name="name" type="text">
+				<input name="name" type="text" placeholder="${state.data.myName || "tunombre"}">
          </label>
 
 			<p class="label-title">Contraseña</p>

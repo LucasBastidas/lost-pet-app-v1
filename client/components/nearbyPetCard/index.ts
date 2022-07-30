@@ -51,6 +51,7 @@ export function initNearbyPetCard() {
 			const title = this.getAttribute("title");
 			const description = this.getAttribute("description");
 			const imageUrl = this.getAttribute("imageUrl");
+			const ubication = this.getAttribute("ubication");
 			const petId = this.getAttribute("pet-id");
 			var style = document.createElement("style");
 			style.innerHTML = `
@@ -60,8 +61,8 @@ export function initNearbyPetCard() {
                align-items:center;
                text-align: inherit;
                padding-bottom:5px;
-               height:400px;
-               width:320px;
+               height:430px;
+               width:330px;
                border: 5px solid ;
                border-radius: 5%;
                background-color: #313131;
@@ -88,6 +89,10 @@ export function initNearbyPetCard() {
                margin: 0px;
                padding-top:10px;
             }
+            .ubication{
+               color:aquamarine;
+               margin:0px;
+            }
             .description{
                font-size: 18px;
                margin-bottom: 8px;
@@ -108,6 +113,10 @@ export function initNearbyPetCard() {
                width: 200px;
                height: 40px;
                font-weight: 700;
+               cursor:pointer;
+            }
+            .report-button:hover{
+               background-color: #2c5765
             }
             .encontrado{
                display:none;
@@ -122,7 +131,8 @@ export function initNearbyPetCard() {
          <img src="${imageUrl}" class="image"></img>
          </div>
          <div class="title-description-cont">
-            <h3 class="title">${title}</h3>
+            <h2 class="title">${title}</h2>
+            <h3 class ="ubication">${ubication}</h3>
             <p class="description">${description}</p>
          </div>
          <div>

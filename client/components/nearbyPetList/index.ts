@@ -122,7 +122,7 @@ export function initNearbyPetCardsList() {
 										pet.description || "Sin descripción"
 									}" petId="${pet.objectID}" userId="${pet.user_id}" lost="${
 										pet.lost || "true"
-									}"  ></x-nearby-pet-card>`
+									}" ubication="${pet.ubication}"  ></x-nearby-pet-card>`
 							)
 							.join("")}
       </div>

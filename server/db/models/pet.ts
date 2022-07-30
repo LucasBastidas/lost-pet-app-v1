@@ -12,6 +12,7 @@ Pet.init(
 		imageUrl: DataTypes.STRING,
 		user_id: DataTypes.INTEGER,
 		user_email: DataTypes.STRING,
+		ubication: DataTypes.STRING,
 	},
 	{ sequelize, modelName: "pet" }
 );

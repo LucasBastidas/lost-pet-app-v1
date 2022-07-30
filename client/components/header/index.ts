@@ -155,6 +155,7 @@ export function initHeaderComp() {
          .logo{
             height: 90px;
             width: 90px;
+				cursor:pointer;
          }
 		 .open-menu-button-cont{
 			display:flex;

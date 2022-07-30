@@ -11,4 +11,3 @@ export function initMap(map) {
 		zoom: 12,
 	});
 }
-export const a = 2;

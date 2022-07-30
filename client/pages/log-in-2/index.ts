@@ -39,20 +39,23 @@ class LogIn2 extends HTMLElement {
 					//SI ES CORRECTA TE LOGEA Y TE ENVÍA A DONDE HABIAS SELECCIONADO ANTES
 					else {
 						(error as any).style.display = "none";
-						// console.log("contraseña correcta");
-						state.setLogged(() => {
-							if (state.data.go === "myData") {
-								Router.go("/my-data");
-							} else if (state.data.go === "myReports") {
-								state.getMyReportPets(() => {
-									// console.log("ya tengo mis pets");
-									Router.go("/my-reported-pets");
-								});
-							} else if (state.data.go === "reportPet") {
-								Router.go("/report-pet");
-							} else {
-								Router.go("/");
-							}
+						state.getMyName(password, () => {
+							console.log(state.data.myName);
+							// console.log("contraseña correcta");
+							state.setLogged(() => {
+								if (state.data.go === "myData") {
+									Router.go("/my-data");
+								} else if (state.data.go === "myReports") {
+									state.getMyReportPets(() => {
+										// console.log("ya tengo mis pets");
+										Router.go("/my-reported-pets");
+									});
+								} else if (state.data.go === "reportPet") {
+									Router.go("/report-pet");
+								} else {
+									Router.go("/");
+								}
+							});
 						});
 					}
 				});

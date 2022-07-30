@@ -35,7 +35,7 @@ export function initMyPetList() {
 			const map = this.querySelector("#map");
 			map as any;
 
-			initMap(map);
+			const mapboxMap = initMap(map);
 			async function searchLatAndLng(lugar) {
 				if (lugar == "" || lugar == undefined) {
 					latAndLng[0] = undefined;
@@ -60,6 +60,33 @@ export function initMyPetList() {
 			const list = this.querySelector(".list");
 			const closeButton = this.querySelector(".cerrar");
 			const formButton = this.querySelector(".save-changes-button");
+
+			const mapboxButton = this.querySelector(".mapbox-button");
+			const mapboxInput = this.querySelector("#mapbox-input");
+			const petname = this.querySelector("#petName");
+			const petdescription = this.querySelector("#petDescription");
+			var mapBoxUbication = "";
+
+			mapboxButton.addEventListener("click", () => {
+				console.log("holas");
+				console.log(mapboxInput);
+				console.log(mapboxInput.textContent);
+				console.log((mapboxInput as any).value);
+				mapBoxUbication = (mapboxInput as any).value;
+				mapboxClient.geocodeForward(
+					(mapboxInput as any).value,
+					{
+						autocomplete: true,
+						language: "es",
+					},
+					function (err, data, res) {
+						console.log(data.features[0].geometry.coordinates);
+						mapboxMap.setCenter(data.features[0].geometry.coordinates);
+						mapboxMap.setZoom(12);
+						if (!err) data.features;
+					}
+				);
+			});
 
 			//BOTON CERRAR MODIFICACION
 			closeButton.addEventListener("click", () => {
@@ -105,9 +132,25 @@ export function initMyPetList() {
 
 			//BOTON DE MODIFICAR MASCOTA O PUBLICACION
 			list.addEventListener("update", (e) => {
-				// console.log((e as any).detail);
+				console.log((e as any).detail);
 				const petId = (e as any).detail.petId;
 				const userId = (e as any).detail.userId;
+				const petName = (e as any).detail.petName;
+				const petDescription = (e as any).detail.petDescrption;
+				const petImage = (e as any).detail.petImage;
+				const petUbication = (e as any).detail.petUbication;
+
+				(
+					fotoInput as any
+				).style.background = `#fff url(${petImage}) center center/cover no-repeat`;
+				console.log(petname);
+				console.log(petdescription);
+
+				(petname as any).placeholder = petName;
+
+				(petdescription as any).placeholder = petDescription;
+				(mapboxInput as any).placeholder = petUbication;
+
 				state.setPetIdToUpdate(petId, () => {
 					// console.log("Metí el id");
 					(formCont as any).style.display = "flex";
@@ -122,6 +165,7 @@ export function initMyPetList() {
 				var newPetUrlImage = urlImage[0];
 				var lng = latAndLng[0];
 				var lat = latAndLng[1];
+				var newPetUbication = (target as any).qmap.value;
 				if (newPetName === "") {
 					newPetName = undefined;
 				}
@@ -131,6 +175,9 @@ export function initMyPetList() {
 				if (newPetUrlImage === "") {
 					newPetUrlImage = undefined;
 				}
+				if (newPetUbication === "") {
+					newPetUbication = undefined;
+				}
 
 				state.setPetDataToUpdate(
 					newPetName,
@@ -138,6 +185,7 @@ export function initMyPetList() {
 					newPetUrlImage,
 					lat,
 					lng,
+					newPetUbication,
 					() => {
 						console.log(state.data.myPetUpdateData);
 						// console.log("voy a modificar");
@@ -199,9 +247,15 @@ export function initMyPetList() {
             height: 100px;
          }
 		 .save-changes-button{
-			width:250px;
-			height:30px;
+			width: 250px;
+			margin-top: 30px;
+			border: none;
+			height: 30px;
+			border-radius: 25px;
+			background-color: aquamarine;
+			cursor: pointer;
 		 }
+
          .upload-image-cont{
             display: flex;
             flex-direction: column;
@@ -244,6 +298,29 @@ export function initMyPetList() {
 				margin-top: 5px;
 				margin-bottom: 5px;
 			}
+			.mapbox-form{
+				display:flex;
+				margin-bottom: 16px;
+				gap: 5px;
+			}
+			.mapbox-button{
+				appearance: auto;
+				writing-mode: horizontal-tb !important;
+				display: flex;
+				height: 25px;
+				align-items: center;
+				border: solid 2px;
+				border-radius: 5px;
+				text-align: center;        
+				cursor: pointer;
+				background-color: buttonface;
+				margin: 0em;
+				padding: 1px 6px;
+				border-width: 2px;
+				border-style: outset;
+				border-color: buttonborder;
+				border-image: initial;     
+			}
 			.cerrar{
             position: fixed;
             right: 24px;
@@ -266,7 +343,7 @@ export function initMyPetList() {
 										pet.description || "Sin descripción"
 									}" petId="${pet.id || "1"}"  userId="${pet.user_id}" lost= ${
 										pet.lost
-									} ></x-my-pet-card>`
+									} ubication="${pet.ubication}" ></x-my-pet-card>`
 							)
 							.join("")}
       </div>
@@ -276,7 +353,7 @@ export function initMyPetList() {
 
       <label>
          <p>Nombre</p>
-         <input class="input" name="petName" type="text">
+         <input class="input" name="petName" type="text" id="petName">
       </label>
          <div class="upload-image-cont">
       <p class="image-text">Arrastrá tu imagen o apreta acá ⬇⬇</p>
@@ -285,12 +362,16 @@ export function initMyPetList() {
 
       <label>
       <p>Description</p>
-      <textarea class="text-area" name="petDescription"></textarea>
+      <textarea class="text-area" name="petDescription" id="petDescription"></textarea>
       </label>
 
 		<label>
                <p>UBICACIÓN (Punto de referencia)</p>
-               <input class="input" name="qmap" type="text">
+
+					<div class="mapbox-form">
+               <input class="input" name="qmap" type="text" id="mapbox-input">
+               <p class="mapbox-button">🌎</p>
+               </div>
 					
 					<div class="map-cont">
                <div id="map" class="map"></div>
