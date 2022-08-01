@@ -68,10 +68,10 @@ export function initMyPetList() {
 			var mapBoxUbication = "";
 
 			mapboxButton.addEventListener("click", () => {
-				console.log("holas");
-				console.log(mapboxInput);
-				console.log(mapboxInput.textContent);
-				console.log((mapboxInput as any).value);
+				// console.log("holas");
+				// console.log(mapboxInput);
+				// console.log(mapboxInput.textContent);
+				// console.log((mapboxInput as any).value);
 				mapBoxUbication = (mapboxInput as any).value;
 				mapboxClient.geocodeForward(
 					(mapboxInput as any).value,
@@ -80,7 +80,7 @@ export function initMyPetList() {
 						language: "es",
 					},
 					function (err, data, res) {
-						console.log(data.features[0].geometry.coordinates);
+						// console.log(data.features[0].geometry.coordinates);
 						mapboxMap.setCenter(data.features[0].geometry.coordinates);
 						mapboxMap.setZoom(12);
 						if (!err) data.features;
