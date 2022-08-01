@@ -132,7 +132,7 @@ export function initMyPetList() {
 
 			//BOTON DE MODIFICAR MASCOTA O PUBLICACION
 			list.addEventListener("update", (e) => {
-				console.log((e as any).detail);
+				// console.log((e as any).detail);
 				const petId = (e as any).detail.petId;
 				const userId = (e as any).detail.userId;
 				const petName = (e as any).detail.petName;
@@ -143,8 +143,8 @@ export function initMyPetList() {
 				(
 					fotoInput as any
 				).style.background = `#fff url(${petImage}) center center/cover no-repeat`;
-				console.log(petname);
-				console.log(petdescription);
+				// console.log(petname);
+				// console.log(petdescription);
 
 				(petname as any).placeholder = petName;
 
