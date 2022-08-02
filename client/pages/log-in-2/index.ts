@@ -86,6 +86,7 @@ class LogIn2 extends HTMLElement {
 		height: 30px;
 		border-radius: 25px;
 		background-color: aquamarine;
+		cursor:pointer;
 	  }
 		.error{
 			display:none;

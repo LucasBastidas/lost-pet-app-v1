@@ -89,7 +89,8 @@ class MyData extends HTMLElement {
 		border: none;
 		height: 30px;
 		background-color: aquamarine;
-    border-radius: 25px;
+		border-radius: 25px;
+		cursor:pointer;
 	}
       `;
 		this.innerHTML = `

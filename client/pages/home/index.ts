@@ -61,6 +61,7 @@ class Home extends HTMLElement {
 			border: none;
 			background-color: burlywood;
 			border-radius: 70px;
+			cursor:pointer;
 		}
       `;
 		this.innerHTML = `
