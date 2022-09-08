@@ -35,7 +35,7 @@ import { json, where } from "sequelize/types";
 	const app = express();
 	app.use(cors());
 	const port = process.env.PORT || 3000;
-	// console.log("hola", process.env); dasass
+	// console.log("hola", process.env); dasasssfgjjdofgjkdfg
 	const SECRET = process.env.SECRET;
 
 	app.use(express.json({ limit: "50mb" }));
