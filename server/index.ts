@@ -20,7 +20,6 @@ import {
 import { middelwareAuth, bodyToIndex } from "./middlewares/middlewares";
 import * as crypto from "crypto";
 import * as express from "express";
-import cors from "cors";
 import * as jwt from "jsonwebtoken";
 import { json, where } from "sequelize/types";
 
@@ -33,7 +32,22 @@ import { json, where } from "sequelize/types";
 	}
 
 	const app = express();
-	app.options("*", cors());
+
+	var cors = require("cors");
+	var whitelist = [
+		"http://127.0.0.1:8080",
+		"https://lost-pets-app-v1.herokuapp.com",
+	];
+	var corsOptions = {
+		origin: function (origin, callback) {
+			if (whitelist.indexOf(origin) !== -1) {
+				callback(null, true);
+			} else {
+				callback(new Error("Not allowed by CORS"));
+			}
+		},
+	};
+
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env);
 	const SECRET = process.env.SECRET;
