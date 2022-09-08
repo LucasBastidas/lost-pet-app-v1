@@ -43,7 +43,10 @@ import { json, where } from "sequelize/types";
 	app.listen(port, () => {
 		console.log("corriendo en el puerto: ", port);
 	});
-	const allowedHosts = ["http://127.0.0.1:8080/"];
+	const allowedHosts = [
+		"http://127.0.0.1:8080",
+		"https://lost-pets-app-v1.herokuapp.com",
+	];
 	app.use(
 		cors({
 			origin: allowedHosts,
