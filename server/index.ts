@@ -1,6 +1,7 @@
 import { sequelize } from "./db/connection";
 import { User, Auth, Pet } from "./db/models";
 import { petsIndex } from "./lib/algolia";
+import * as cors from "cors";
 import "dotenv/config";
 import {
 	findUserByEmail,
@@ -32,23 +33,7 @@ import { json, where } from "sequelize/types";
 	}
 
 	const app = express();
-
-	var cors = require("cors");
-	var whitelist = [
-		"http://127.0.0.1:8080",
-		"https://lost-pets-app-v1.herokuapp.com",
-	];
-	var corsOptions = {
-		origin: function (origin, callback) {
-			if (whitelist.indexOf(origin) !== -1) {
-				callback(null, true);
-			} else {
-				callback(new Error("Not allowed by CORS"));
-			}
-		},
-	};
-	app.options("*", cors()); // include before other routes
-
+	app.use(cors());
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env);
 	const SECRET = process.env.SECRET;
