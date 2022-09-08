@@ -1,7 +1,6 @@
 import { sequelize } from "./db/connection";
 import { User, Auth, Pet } from "./db/models";
 import { petsIndex } from "./lib/algolia";
-import cors from "cors";
 import "dotenv/config";
 import {
 	findUserByEmail,
@@ -43,15 +42,6 @@ import { json, where } from "sequelize/types";
 	app.listen(port, () => {
 		console.log("corriendo en el puerto: ", port);
 	});
-	const allowedHosts = [
-		"http://127.0.0.1:8080",
-		"https://lost-pets-app-v1.herokuapp.com",
-	];
-	app.use(
-		cors({
-			origin: allowedHosts,
-		})
-	);
 
 	app.get("/test", function (req, res) {
 		res.json({ prueba: "hola" });
