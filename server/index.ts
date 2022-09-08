@@ -47,6 +47,7 @@ import { json, where } from "sequelize/types";
 			}
 		},
 	};
+	app.options("*", cors()); // include before other routes
 
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env);
