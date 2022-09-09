@@ -141,7 +141,7 @@ const state = {
 			}),
 		});
 		const emailReportData = await emailReport.json();
-		// console.log(emailReportData);
+		// console.log(emailReportData);asd
 		callback();
 	},
 
