@@ -169,7 +169,7 @@ const state = {
 		callback();
 	},
 
-	//SETEA NAME PARA REGISTRARSE
+	//SETEA NAME PARA REGISTRARSEE
 	setMyNameForRegister(name: string, callback) {
 		this.data.myName = name;
 		callback();
