@@ -32,7 +32,10 @@ import { json, where } from "sequelize/types";
 			.digest("hex");
 	}
 	const app = express();
-	app.use(cors());
+
+	const allowedHosts = ["http://127.0.0.1:8080"];
+
+	app.use(cors({ origin: allowedHosts }));
 
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env)
