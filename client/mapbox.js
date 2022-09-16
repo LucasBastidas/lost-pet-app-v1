@@ -1,6 +1,7 @@
 import { state } from "./state";
 const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 
+//ARCHIVO OBSOLETO
 export const mapboxClient = new MapboxClient(MAPBOX_TOKEN);
 export function initMap(map) {
 	mapboxgl.accessToken = MAPBOX_TOKEN;
