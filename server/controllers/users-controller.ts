@@ -29,7 +29,7 @@ export async function findUserByEmail(email: string) {
 }
 const SECRET = process.env.SECRET;
 
-//SE CREA EL USUARIO Y SU AUTH
+//SE CREA EL USUARIO Y SU AUTH//
 export async function signUp(
 	email: string,
 	fullName: string,
