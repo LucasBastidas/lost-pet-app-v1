@@ -31,14 +31,14 @@ import { json, where } from "sequelize/types";
 			.update(JSON.stringify(text))
 			.digest("hex");
 	}
-
 	const app = express();
 	app.use(cors());
+
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env); dasasssfgjjdofgjkdfg
 	const SECRET = process.env.SECRET;
 
-	app.use(express.json({ limit: "50mb" }));
+	app.use(express.json({ limit: "75mb" }));
 	app.use(express.static("dist"));
 
 	app.listen(port, () => {
