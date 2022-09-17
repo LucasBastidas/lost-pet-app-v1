@@ -102,7 +102,7 @@ import { json, where } from "sequelize/types";
 		res.json(userUpdate);
 	});
 
-	//CHANGE PASSWORD//
+	//CHANGE PASSWORD///
 	app.patch("/auth/change-password", middelwareAuth, async (req, res) => {
 		const userId = req.userData.id;
 		const newPassword = req.body.password;
