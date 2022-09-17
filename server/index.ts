@@ -110,7 +110,7 @@ import { json, where } from "sequelize/types";
 		res.json(passwordChange);
 	});
 
-	//RECOVER PASSWORD///
+	//RECOVER PASSWORD//
 	app.post("/recover-password", async function (req, res) {
 		const data = req.body;
 
