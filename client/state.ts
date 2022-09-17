@@ -2,7 +2,7 @@ import size from "lodash/size";
 import { Router } from "@vaadin/router";
 import * as crypto from "crypto";
 import mapboxgl = require("mapbox-gl");
-
+const API_SERVER = "https://lost-pets-app-v1.herokuapp.com";
 const state = {
 	data: {
 		myLat: "",
@@ -68,7 +68,9 @@ const state = {
 		const lng = this.data.myLng;
 		const currentState = this.data;
 
-		const search = await fetch("/pets-close-to?lat=" + lat + "&lng=" + lng);
+		const search = await fetch(
+			API_SERVER + "/pets-close-to?lat=" + lat + "&lng=" + lng
+		);
 		const data = await search.json();
 		for (const pet of data) {
 			currentState.nearbyPets.push(pet);
@@ -81,7 +83,7 @@ const state = {
 	async getMyReportPets(callback) {
 		state.data.myPets = []; //SIEMPRE VACIA EL ARRAY PARA QUE NO HAYA DUPLICADOS
 		const currentState = this.data;
-		const myPets = await fetch("/me/pets", {
+		const myPets = await fetch(API_SERVER + "/me/pets", {
 			headers: {
 				"content-type": "application/json",
 				authorization: "bearer " + this.data.token,
@@ -115,7 +117,7 @@ const state = {
 
 	//SETEA EMAIL PARA ENVIAR REPORTE
 	async setReportPetEmail(callback) {
-		const user = await fetch("/users", {
+		const user = await fetch(API_SERVER + "/users", {
 			method: "post",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify({
@@ -129,7 +131,7 @@ const state = {
 
 	//ENVIA EL EMAIL DE REPORTE AL PROPIETARIO DE LA MASCOTA
 	async sendReportPetEmail(callback) {
-		const emailReport = await fetch("/send-email", {
+		const emailReport = await fetch(API_SERVER + "/send-email", {
 			method: "post",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify({
@@ -152,7 +154,7 @@ const state = {
 	},
 	//CHECK-USER-EMAIL (CHEKEA SI EL EMAIL ESTA REGISTRADO)
 	async checkUserEmail(callback) {
-		const emailCheck = await fetch("/email-check", {
+		const emailCheck = await fetch(API_SERVER + "/email-check", {
 			method: "post",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify({
@@ -189,7 +191,7 @@ const state = {
 
 	//SIGNUP
 	async signUp(password, callback) {
-		const authSignUp = await fetch("/auth", {
+		const authSignUp = await fetch(API_SERVER + "/auth", {
 			method: "post",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify({
@@ -205,7 +207,7 @@ const state = {
 
 	//OBTENGO MI TOKEN
 	async getToken(password, callback) {
-		const token = await fetch("/auth/token", {
+		const token = await fetch(API_SERVER + "/auth/token", {
 			method: "post",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify({
@@ -228,7 +230,7 @@ const state = {
 
 	//CAMBIAR EL NOMBRE EN DB
 	async updateName(newName: string, callback) {
-		const nameChange = await fetch("/me/update", {
+		const nameChange = await fetch(API_SERVER + "/me/update", {
 			method: "PATCH",
 			headers: {
 				"content-type": "application/json",
@@ -245,7 +247,7 @@ const state = {
 
 	//CAMBIAR PASSWORD
 	async updatePassword(newPassword: string, callback) {
-		const passwordChanged = await fetch("/auth/change-password", {
+		const passwordChanged = await fetch(API_SERVER + "/auth/change-password", {
 			method: "PATCH",
 			headers: {
 				"content-type": "application/json",
@@ -262,7 +264,7 @@ const state = {
 
 	//RECUPERAR CONTRASEÑA
 	async recoverPassword(callback) {
-		const recoverPassword = await fetch("/recover-password", {
+		const recoverPassword = await fetch(API_SERVER + "/recover-password", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -303,7 +305,7 @@ const state = {
 
 	//POSTEA UN NUEVO REPORTE DE MASCOTA
 	async postNewReport(callback) {
-		const newReportPet = await fetch("/pets", {
+		const newReportPet = await fetch(API_SERVER + "/pets", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -351,7 +353,7 @@ const state = {
 	//MODIFICA LOS DATOS DE LA MASCOTA EN LA DB
 	async updateDataOfMyReportedPet(callback) {
 		const newReportPet = await fetch(
-			"/me/pets?id=" + state.data.myPetUpdateData.id,
+			API_SERVER + "/me/pets?id=" + state.data.myPetUpdateData.id,
 			{
 				method: "PATCH",
 				headers: {
@@ -374,7 +376,7 @@ const state = {
 
 	//GET MY NAME
 	async getMyName(password, callback) {
-		const response = await fetch("/me", {
+		const response = await fetch(API_SERVER + "/me", {
 			method: "post",
 			headers: {
 				"content-type": "application/json",
@@ -400,7 +402,7 @@ const state = {
 
 	//CAMBIA A LA MASCOTA A: "ENCONTRADA"
 	async changeStateOfReportToFounded(petId, callback) {
-		const newReportPet = await fetch("/me/pets?id=" + petId, {
+		const newReportPet = await fetch(API_SERVER + "/me/pets?id=" + petId, {
 			method: "PATCH",
 			headers: {
 				"content-type": "application/json",
@@ -418,7 +420,7 @@ const state = {
 
 	//ELIMINA LA PUBLICACIÓN Y LA MASCOTA DE LA DB
 	async deletePet(petId, callback) {
-		const deletePet = await fetch("/me/pets?id=" + petId, {
+		const deletePet = await fetch(API_SERVER + "/me/pets?id=" + petId, {
 			method: "DELETE",
 			headers: {
 				"content-type": "application/json",
