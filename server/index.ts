@@ -33,7 +33,15 @@ import { json, where } from "sequelize/types";
 	}
 	const app = express();
 
-	app.use(cors());
+	// app.use(cors());
+
+	const allowedHosts = ["https://apx-dwf-m8-1c6c4.web.app"];
+
+	app.use(
+		cors({
+			origin: allowedHosts,
+		})
+	);
 
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env)
