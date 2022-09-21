@@ -57,7 +57,7 @@ import { json, where } from "sequelize/types";
 		res.json({ user: user });
 	});
 
-	//FIND EMAIL BY ID
+	//FIND EMAIL BY ID//
 	app.post("/users", async function (req, res) {
 		const id = req.body.id;
 		const user = await User.findByPk(id);
