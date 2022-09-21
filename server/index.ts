@@ -33,7 +33,7 @@ import { json, where } from "sequelize/types";
 	}
 	const app = express();
 
-	app.use(cors({ origin: "https://apx-dwf-m8-1c6c4.firebaseapp.com" }));
+	app.use(cors());
 
 	const port = process.env.PORT || 3000;
 	// console.log("hola", process.env)//
