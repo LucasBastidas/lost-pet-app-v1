@@ -147,7 +147,7 @@ const state = {
 		callback();
 	},
 
-	//SETEA EMAIL DEL USUARIO QUE QUIERE LOGEARSE O REGISTRARSE
+	//SETEA EMAIL DEL USUARIO QUE QUIERE LOGEARSE O REGISTRARSE//
 	setMyEmail(email, callback) {
 		this.data.myEmail = email;
 		callback();
