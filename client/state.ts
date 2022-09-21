@@ -129,7 +129,7 @@ const state = {
 		callback();
 	},
 
-	//ENVIA EL EMAIL DE REPORTE AL PROPIETARIO DE LA MASCOTA/
+	//ENVIA EL EMAIL DE REPORTE AL PROPIETARIO DE LA MASCOTA//
 	async sendReportPetEmail(callback) {
 		const emailReport = await fetch(API_SERVER + "/send-email", {
 			method: "post",
