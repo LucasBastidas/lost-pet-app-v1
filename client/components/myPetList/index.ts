@@ -144,7 +144,6 @@ export function initMyPetList() {
 					fotoInput as any
 				).style.background = `#fff url(${petImage}) center center/cover no-repeat`;
 				// console.log(petname);
-				// console.log(petdescription);
 
 				(petname as any).placeholder = petName;
 
