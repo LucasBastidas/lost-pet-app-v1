@@ -32,6 +32,7 @@ import { json, where } from "sequelize/types";
 			.digest("hex");
 	}
 	const app = express();
+
 	app.use(cors());
 
 	const port = process.env.PORT || 3000;
