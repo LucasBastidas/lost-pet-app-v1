@@ -65,6 +65,14 @@ import { json, where } from "sequelize/types";
 		res.json({ email: (user as any).email });
 	});
 
+	//PRUEBA
+	app.post("/find-user/:id", async function (req, res) {
+		const id = req.params.id;
+		const user = await User.findByPk(id);
+		console.log(id);
+		res.json({ email: (user as any).email });
+	});
+
 	//SIGNUP
 	app.post("/auth", async function (req, res) {
 		const userData = req.body;
