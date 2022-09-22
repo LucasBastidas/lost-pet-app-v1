@@ -24,7 +24,7 @@ class Home extends HTMLElement {
 			});
 		}
 
-		//BOTON PARA DAR UBICACIÓN/
+		//BOTON PARA DAR UBICACIÓN
 		button.addEventListener("click", () => {
 			state.setMyLoc(() => {
 				state.data.nearbyPets = [];
