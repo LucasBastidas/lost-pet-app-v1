@@ -33,7 +33,7 @@ export function initNearbyPetCardsList() {
 				});
 			});
 
-			//SE ENVIA UN EMAIL CON LA INFORMACIÓN AL "DUEÑO" DE LA MASCOTA
+			//SE ENVIA UN EMAIL CON LA INFORMACIÓN AL "DUEÑO" DE LA MASCOTA/
 			form.addEventListener("submit", (e) => {
 				e.preventDefault();
 				// console.log("funcionando");
