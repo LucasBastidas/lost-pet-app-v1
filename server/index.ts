@@ -65,12 +65,21 @@ import { json, where } from "sequelize/types";
 		res.json({ email: (user as any).email });
 	});
 
-	//PRUEBA//
-	app.get("/find-user/:id", async function (req, res) {
+	//PRUEBA// HACER ENDPOINT BUSCAR EMAIL Y ENVIAR
+	app.get("/send-report-email/:id", async function (req, res) {
 		const id = req.params.id;
+		const data = req.body;
 		const user = await User.findByPk(id);
-		console.log(id);
-		res.json({ email: (user as any).email });
+		// console.log(id);
+		// res.json({ email: (user as any).email });
+		const sendEmail = await sendPetReportEmail(
+			data.name,
+			data.tel,
+			data.message,
+			(user as any).email,
+			data.petName
+		);
+		res.json({ report: "sent", sendEmail });
 	});
 
 	//SIGNUP
