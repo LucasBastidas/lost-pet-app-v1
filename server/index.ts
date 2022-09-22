@@ -65,7 +65,7 @@ import { json, where } from "sequelize/types";
 		res.json({ email: (user as any).email });
 	});
 
-	//PRUEBA// HACER ENDPOINT BUSCAR EMAIL Y ENVIAR
+	//PRUEBA// HACER ENDPOINT BUSCAR EMAIL Y ENVIAR/
 	app.get("/send-report-email/:id", async function (req, res) {
 		const id = req.params.id;
 		const data = req.body;
