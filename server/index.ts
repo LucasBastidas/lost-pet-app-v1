@@ -58,7 +58,7 @@ import { json, where } from "sequelize/types";
 	});
 
 	//FIND EMAIL BY ID/
-	app.options("*", cors()).post("/users", async function (req, res) {
+	app.post("/users", async function (req, res) {
 		const id = req.body.id;
 		const user = await User.findByPk(id);
 		console.log(id);
@@ -174,7 +174,7 @@ import { json, where } from "sequelize/types";
 	});
 
 	//SEND EMAIL-PET-REPORT
-	app.options("*", cors()).post("/send-email", async function (req, res) {
+	app.post("/send-email", async function (req, res) {
 		const data = req.body;
 		const sendEmail = await sendPetReportEmail(
 			data.name,
