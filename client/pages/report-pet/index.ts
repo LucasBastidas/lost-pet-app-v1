@@ -50,7 +50,7 @@ class ReportPet extends HTMLElement {
 		}
 
 		mapboxButton.addEventListener("click", () => {
-			console.log("holas");
+			// console.log("holas")
 			console.log(mapboxInput);
 			console.log(mapboxInput.textContent);
 			console.log((mapboxInput as any).value);
