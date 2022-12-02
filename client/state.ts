@@ -162,7 +162,8 @@ const state = {
 			}),
 		});
 		const data = await emailCheck.json();
-		// console.log(data);
+		//check
+		console.log(data);
 		if (data.user === null) {
 			this.data.register = 0;
 		} else {
