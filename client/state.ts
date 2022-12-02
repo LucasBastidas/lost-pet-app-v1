@@ -2,7 +2,7 @@ import size from "lodash/size";
 import { Router } from "@vaadin/router";
 import * as crypto from "crypto";
 import mapboxgl = require("mapbox-gl");
-const API_SERVER = "https://lost-pets-webapp-v1.onrender.com";
+const API_SERVER = "https://lost-pets-webapp-v1.onrender.com/";
 const state = {
 	data: {
 		myLat: "",
